@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <img id ="pic" src="pic1.png" alt="" width="300">
-                <input id="myFileInput" type="file" accept="image/*;" capture="camera">
+                <img id ="pic" src="" alt="" width="300">
+                <input id="myFile" type="file" accept="image/*;" capture="camera">
                 <button id="img-to-txt">
                         Convert image to text
                 </button>
@@ -52,10 +52,22 @@ img.onload = function(){
 
 }  */
 
+function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#pic').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#myFile").change(function(){
+        readURL(this);
+    });
             // 2. Write some logic to initialize the text recognition
             document.getElementById("img-to-txt").addEventListener("click", function(){
                 let btn = this;
-
                 // Disable button until the text recognition finishes
                 btn.disable = true;
                 var image = document.getElementById("pic");
