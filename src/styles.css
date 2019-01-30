@@ -1,0 +1,12 @@
+body {
+    background-color: navy;
+}
+
+#title {
+    text-align: center;
+    color: white;
+}
+
+#log {
+    color: white;
+}
